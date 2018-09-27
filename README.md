@@ -1,6 +1,6 @@
 ==Area Trainer==
 
-Area Trainer is a programme for you to practise calculating the areas of rectangles, triangles, & circles, fully written in Python.
+Area Trainer is a programme for you to practise calculating the areas of rectangles, triangles, and circles, fully written in Python.
 The programme serves as a useful tool for test and examination revision.
 You can choose to do short answer questions or multiple choice questions.
 
@@ -18,3 +18,8 @@ In multiple choice questions, you will only have one attempt to answer the quest
 If your answer is correct, you will gain 3 points.
 
 If you answer any question wrong, you will not gain any points.
+
+==Future Plans==
+- Improve exception handling.
+- Turn Area Trainer into a fully-functional Discord bot with a global leaderboard system.
+- Make questions more "random".
