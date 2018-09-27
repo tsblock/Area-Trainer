@@ -1295,7 +1295,7 @@ def exitcont():
             print("\n[ERROR] Invalid character(s).")
 def credits():
     print("\n. . .\n\n==Credits==\n\nCloroxEnergyDrink - Creator, lead developer\nTwitter: https://twitter.com/CloroxDelicious\nYouTube: https://www.youtube.com/c/randomvideoz")
-    print("Reddit: https://www.reddit.com/u/CloroxEnergyDrink_\nGitHub: https://github.com/cloroxdrink")
+    print("Reddit: https://www.reddit.com/u/CloroxEnergyDrink_\nGitHub: https://github.com/CloroxDrinkYT")
     print("Google+: https://plus.google.com/116788079410482937881\nSteam: https://steamcommunity.com/id/CloroxEnergyDrink")
     print("\nJohn MacNabb - Assistant, helper\nLinkedIn: https://www.linkedin.com/in/john-m-1164399/")
     print("\nTSB - Helper\nTwitter: https://twitter.com/realtsblock\nYouTube: https://www.youtube.com/channel/UCaQBFBIYdYFUjDwkVsDFmyw\nReddit: https://www.reddit.com/u/tsblock")
