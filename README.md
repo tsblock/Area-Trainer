@@ -9,9 +9,13 @@ You can choose to do short answer questions or multiple choice questions.
 In short answer questions, you will have five attempts to answer the question correctly.
 
 First attempt: 5 points
+
 Second attempt: 4 points
+
 Third attempt: 3 points
+
 Fourth attempt: 2 points
+
 Fifth attempt: 1 point
 
 In multiple choice questions, you will only have one attempt to answer the question correctly.
