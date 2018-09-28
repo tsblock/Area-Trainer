@@ -1315,7 +1315,7 @@ def about():
     print("\nIn multiple choice questions, you will only have one attempt to answer the question correctly.\nIf your answer is correct, you will gain 3 points.")
     print("\nIf you answer any question wrong, you will not gain any points.")
     print("\n==Guessing Game==\n\nWhen you select the Guessing Game, the programme generates a number in between 1 to 100,\nand you must guess it within 8 tries.")
-    print("Although you cannot earn any points from playing the Guessing Game,\nit is still a fun way to take a break from Area Trainer.")
+    print("You earn 1 point if you guess the correct number.")
     try:
         goback=int(input("\nEnter 1 to view credits, or any other number to go back: "))
         if(goback==1):
@@ -1336,6 +1336,7 @@ def leaderboard():
     except ValueError:
         print("\nGoing back to main menu...")
 def guess():
+    global total
     xx=random.randint(1,101)
     try:
         yy=int(input("\nGuess a number between 1 and 100. You have 8 tries: "))
@@ -1353,6 +1354,7 @@ def guess():
                 else:
                     print("\nGoing back to main menu...")
                     start()
+        total+=1
         print("\nCongratulations. The number was",xx,"and you have guessed it.")
         print("\nWould you like to continue?")
         aaa=int(input("\nEnter 1 to continue, or any other number to go back to main menu: "))
