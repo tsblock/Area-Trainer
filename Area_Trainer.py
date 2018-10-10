@@ -205,7 +205,7 @@ def x():
             print("\nYou have 1 point.")
         else:
             print("\nYou have {} points.".format(total))
-    print(time.strftime("\nCurrent Time and Date: %c\n\n-----\n\nPlease select an option:\n\n1: Rectangle Area\n2: Triangle Area\n3: Circle Area\n4: About\n5: Guessing Game\n6: Exit Programme"))
+    print(time.strftime("\nCurrent Time and Date: %c\n\n-----\n\nPlease do not force quit the programme or your score will not be saved.\n\nPlease select an option:\n\n1: Rectangle Area\n2: Triangle Area\n3: Circle Area\n4: About\n5: Guessing Game\n6: Exit Programme"))
     try:
         a=int(input("\nEnter a number from above: "))
         return a
@@ -1367,13 +1367,13 @@ def start():
 #Shows info about the programme when the user selects "About" from the main menu.
 def about():
     print("\n================================\nYou have chosen: About.\n================================")
-    print("\n==Area Trainer==\n\nArea Trainer, made on 18 September 2018, is a programme for you to practise calculating the areas of\nrectangles, triangles, and circles.")
+    print("\n== Area Trainer ==\n\nArea Trainer, made on 18 September 2018, is a programme for you to practise calculating the areas of\nrectangles, triangles, and circles.")
     print("The programme serves as a useful tool for test and examination revision.\nYou can choose to do short answer questions or multiple choice questions.")
-    print("\n==Scoring==\n\nIn short answer questions, you will have five attempts to answer the question correctly.")
+    print("\n== Scoring ==\n\nIn short answer questions, you will have five attempts to answer the question correctly.")
     print("\nFirst attempt: 5 points\nSecond attempt: 4 points\nThird attempt: 3 points\nFourth attempt: 2 points\nFifth attempt: 1 point")
     print("\nIn multiple choice questions, you will only have one attempt to answer the question correctly.\nIf your answer is correct, you will gain 3 points.")
     print("\nIf you answer any question wrong, you will not gain any points.")
-    print("\n==Guessing Game==\n\nWhen you select the Guessing Game, the programme generates a number in between 1 to 100,\nand you must guess it within 8 tries.")
+    print("\n== Guessing Game ==\n\nA built-in game for you to take a break from Area Trainer.\nWhen you select the Guessing Game, the programme generates a number in between 1 to 100,\nand you must guess it within 8 tries.")
     print("You earn 1 point if you guess the correct number.")
     try:
         goback=int(input("\nEnter any other number to go back: "))
