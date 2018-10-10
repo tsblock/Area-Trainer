@@ -4,6 +4,8 @@ Area Trainer is a programme for you to practise calculating the areas of rectang
 The programme serves as a useful tool for test and examination revision.
 You can choose to do short answer questions or multiple choice questions.
 
+* Note: You have to put the "users.json" file in the same location as "Area_Trainer.py" or else the code won't function properly.
+
 ## Scoring
 
 In short answer questions, you will have five attempts to answer the question correctly.
