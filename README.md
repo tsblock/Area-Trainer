@@ -23,5 +23,5 @@ If you answer any question wrong, you will not gain any points.
 
 ## Future Plans
 - Improve exception handling.
-- Turn Area Trainer into a fully-functional Discord bot with a global leaderboard system.
+- Turn Area Trainer into a fully-functional mobile app.
 - Make questions more "random".
