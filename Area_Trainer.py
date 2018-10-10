@@ -1,3 +1,85 @@
+#Area Trainer - Made by Ryan.
+#The programme is for students to practise calculating the areas of triangles, rectangles and circles, great for examination revision.
+print("\nStarting programme...\n\n. . .")
+import random,math,time,datetime,os,json
+filename="users.json"
+user=0
+#Gets directory and verifies file location.
+dirr=os.getcwd()
+os.chdir(dirr)
+#Login function where user first enters a username. If the username is in "users.json", it will tell the user to enter the password to that account.
+def signup():
+    time.sleep(1)
+    with open("users.json","r")as f:
+        users=json.load(f)
+    updatedata(users)
+    with open("users.json","w")as f:
+        json.dump(users,f,sort_keys=True,indent=1)
+#The function which updates the data that will be stored in the "users.json" file.
+def updatedata(users):
+    global user
+    try:
+        user=str(input("\nEnter a username: "))
+        if not user in users:
+            print("\nUsername not in database. Creating new account...")
+            time.sleep(1)
+            pas=str(input("\nEnter a password: "))
+            users[user]={}
+            users[user]["password"]=pas
+            users[user]["score"]=0
+            return user
+        else:
+            with open("users.json","r")as f:
+                data=json.load(f)[user]
+                print("\nUsername in database. Fetching info...")
+                time.sleep(1)
+                pas=str(input("\nEnter your password: "))
+                fetch=users[user]["password"]
+                while(pas!=fetch):
+                    pas=str(input("\nIncorrect password. Please try again: "))
+                print("\nLogin successful.")
+                return user
+    except:
+        print("\n[ERROR] Unknown error.")
+        signup()
+#Calls the login function when the user runs the code.
+signup()
+#When the user chooses "Exit Programme" from the main menu, this function will be called.
+def exitcont():
+    global user,total
+    print("\n================================\nYou have chosen: Exit Programme.\n================================")
+    print("\nAre you sure you want to exit?\n\nEnter 1 to exit, or enter any other number to go back to main menu.")
+    choic=3
+    while(choic==3):
+        try:
+            choic=int(input("\nEnter a number: "))
+            if(choic==1):
+                with open("users.json","r")as f:
+                    users=json.load(f)
+                varr=addtotal(users)
+                with open("users.json","w")as f:
+                    json.dump(users,f,sort_keys=True,indent=1)
+                print("\n. . .\n\nThank you for playing Area Trainer. See you next time.\n\nExiting in 3 seconds.\n\n.")
+                time.sleep(1)
+                print(".")
+                time.sleep(1)
+                print(".")
+                time.sleep(1)
+                print("\nStopping programme...\n")
+                exit()
+                return choic
+            else:
+                print("\nGoing back to main menu...")
+                start()
+        except ValueError:
+            print("\n[ERROR] Invalid character(s).")
+#Adds up the total points and saves it to "users.json" when the user decides to exit.
+def addtotal(users):
+    global user,total
+    with open("users.json","r")as f:
+        users[user]["score"]=total
+    return users
+#Function "x", the main menu.
 def x():
     print("\n-----\n")
     if(nowday=="25")and(nowmonth=="12"):
@@ -123,12 +205,13 @@ def x():
             print("\nYou have 1 point.")
         else:
             print("\nYou have {} points.".format(total))
-    print(time.strftime("\nCurrent Time and Date: %c\n\n-----\n\nPlease select an option:\n\n1: Rectangle Area\n2: Triangle Area\n3: Circle Area\n4: About\n5: Leaderboard\n6: Guessing Game\n7: Exit Programme"))
+    print(time.strftime("\nCurrent Time and Date: %c\n\n-----\n\nPlease select an option:\n\n1: Rectangle Area\n2: Triangle Area\n3: Circle Area\n4: About\n5: Guessing Game\n6: Exit Programme"))
     try:
         a=int(input("\nEnter a number from above: "))
         return a
     except:
         print("\n[ERROR] Invalid character(s).")
+#When the user chooses either option 1, 2, or 3, this function will be called.
 def area(choice):
     global total
     c=random.randint(1,101)
@@ -138,6 +221,7 @@ def area(choice):
     small=random.randint(1,50)
     pie=math.pi
     count=0
+    #When the user chooses "Rectangle" from the main menu.
     if(choice==1):
         print("\n================================\nYou have chosen: Rectangle Area.\n================================")
         print("\nPlease select question type:\n\n1: Short Answer\n2: Multiple Choice\nAny other number: Back to Main Menu")
@@ -312,6 +396,7 @@ def area(choice):
             print(".")
             time.sleep(1)
             print("\n================================\nWelcome to Area Trainer.\n================================")
+    #When the user chooses "Triangle" from the main menu.
     elif(choice==2):
         print("\n================================\nYou have chosen: Triangle Area.\n================================")
         print("\nPlease select question type:\n\n1: Short Answer\n2: Multiple Choice\nAny other number: Back to Main Menu")
@@ -775,6 +860,7 @@ def area(choice):
             print(".")
             time.sleep(1)
             print("\n================================\nWelcome to Area Trainer.\n================================")
+    #When the user chooses "Circle" from the main menu.
     else:   
         print("\n================================\nYou have chosen: Circle Area.\n================================")
         print("\nPlease select question type:\n\n1: Short Answer\n2: Multiple Choice\nAny other number: Back to Main Menu")
@@ -1241,6 +1327,7 @@ def area(choice):
             print(".")
             time.sleep(1)
             print("\n================================\nWelcome to Area Trainer.\n================================")
+#Human verification function. The code generates and prints out a random number between 1 and 50000, and the user has to enter the number in order to access to programme.
 def ver():
     randin=random.randint(1,50001)
     val=False
@@ -1254,61 +1341,33 @@ def ver():
             return inp
         except:
             print("\n[ERROR] Incorrect. Please try again.")
+#This function is called after the account validation and human verification are done.
 def start():
     loool=0
-    while(loool!=7):
+    while(loool!=6):
+        #Calls function "x" which is the main menu, where the user selects an option. The choice is then assigned to variable "loool".
         loool=x()
+        #If the user chooses choice 1, 2, or 3.
         if(loool==1)or(loool==2)or(loool==3):
             area(loool)
-        elif(loool==7):
+        #If the user chooses to exit the programme.
+        elif(loool==6):
+            #Calls the "exitcont" function.
             exitcont()
+        #If the user chooses to read more about Area Trainer.
         elif(loool==4):
             about()
+        #If the user chooses to play the number guessing game.
         elif(loool==5):
-            leaderboard()
-        elif(loool==6):
             print("\n================================\nYou have chosen: Guessing Game.\n================================")
             guess()
+        #If the choice is invalid, it tells the user to try again.
         else:
             print("\n[ERROR] Invalid choice. Please try again.")
-def exitcont():
-    print("\n================================\nYou have chosen: Exit Programme.\n================================")
-    print("\nAre you sure you want to exit?\n\nEnter 1 to exit, or enter any other number to go back to main menu.")
-    choic=3
-    while(choic==3):
-        try:
-            choic=int(input("\nEnter a number: "))
-            if(choic==1):
-                print("\n. . .\n\nThank you for playing Area Trainer. See you next time.\n\nExiting in 3 seconds.\n\n.")
-                time.sleep(1)
-                print(".")
-                time.sleep(1)
-                print(".")
-                time.sleep(1)
-                print("\nStopping programme...\n")
-                exit()
-                return choic
-            else:
-                print("\nGoing back to main menu...")
-                start()
-        except ValueError:
-            print("\n[ERROR] Invalid character(s).")
-def credits():
-    print("\n. . .\n\n==Credits==\n\nCloroxEnergyDrink - Creator, lead developer\nTwitter: https://twitter.com/CloroxDelicious\nYouTube: https://www.youtube.com/c/randomvideoz")
-    print("Reddit: https://www.reddit.com/u/CloroxEnergyDrink_\nGitHub: https://github.com/CloroxDrinkYT")
-    print("Google+: https://plus.google.com/116788079410482937881\nSteam: https://steamcommunity.com/id/CloroxEnergyDrink")
-    print("\nJohn MacNabb - Assistant, helper\nLinkedIn: https://www.linkedin.com/in/john-m-1164399/")
-    print("\nTheSimpleBlock - Helper\nTwitter: https://twitter.com/realtsblock\nYouTube: https://www.youtube.com/channel/UCaQBFBIYdYFUjDwkVsDFmyw\nReddit: https://www.reddit.com/u/tsblock")
-    print("GitHub: https://github.com/tsblock")
-    try:
-        goback=int(input("\nEnter any number to go back to main menu: "))
-        print("\nGoing back to main menu...")
-        start()
-    except ValueError:
-        print("\nGoing back to main menu...")
+#Shows info about the programme when the user selects "About" from the main menu.
 def about():
     print("\n================================\nYou have chosen: About.\n================================")
-    print("\n==Area Trainer==\n\nArea Trainer is a programme for you to practise calculating the areas of\nrectangles, triangles, and circles.")
+    print("\n==Area Trainer==\n\nArea Trainer, made on 18 September 2018, is a programme for you to practise calculating the areas of\nrectangles, triangles, and circles.")
     print("The programme serves as a useful tool for test and examination revision.\nYou can choose to do short answer questions or multiple choice questions.")
     print("\n==Scoring==\n\nIn short answer questions, you will have five attempts to answer the question correctly.")
     print("\nFirst attempt: 5 points\nSecond attempt: 4 points\nThird attempt: 3 points\nFourth attempt: 2 points\nFifth attempt: 1 point")
@@ -1317,24 +1376,12 @@ def about():
     print("\n==Guessing Game==\n\nWhen you select the Guessing Game, the programme generates a number in between 1 to 100,\nand you must guess it within 8 tries.")
     print("You earn 1 point if you guess the correct number.")
     try:
-        goback=int(input("\nEnter 1 to view credits, or any other number to go back: "))
-        if(goback==1):
-            credits()
-        else:
-            print("\nGoing back to main menu...")
-            start()
-    except ValueError:
-        print("\nGoing back to main menu...")
-def leaderboard():
-    print("\n================================\nYou have chosen: Leaderboard.\n================================")
-    print("\n==Leaderboard==")
-    print("\nComing soon.")
-    try:
-        goback=int(input("\nEnter any number to go back: "))
+        goback=int(input("\nEnter any other number to go back: "))
         print("\nGoing back to main menu...")
         start()
     except ValueError:
         print("\nGoing back to main menu...")
+#Number guessing game.
 def guess():
     global total
     xx=random.randint(1,101)
@@ -1355,8 +1402,7 @@ def guess():
                     print("\nGoing back to main menu...")
                     start()
         total+=1
-        print("\nCongratulations. The number was",xx,"and you have guessed it.")
-        print("\nWould you like to continue?")
+        print("\nCongratulations. The number was",xx,"and you have guessed it. You have gained 1 point.\n\nWould you like to continue?")
         aaa=int(input("\nEnter 1 to continue, or any other number to go back to main menu: "))
         if(aaa==1):
             guess()
@@ -1371,11 +1417,10 @@ def guess():
         print(".")
         time.sleep(1)
         start()
-print("\nStarting programme...\n\n. . .")
-import random,math,time,datetime
 time.sleep(1)
 ver()
-total=0
+with open("users.json","r")as f:
+    total=json.load(f)[user]["score"]
 nowmonth=str(datetime.datetime.today().strftime("%m"))
 nowday=str(datetime.datetime.today().strftime("%d"))
 weekday=str(datetime.datetime.today().strftime("%w"))
