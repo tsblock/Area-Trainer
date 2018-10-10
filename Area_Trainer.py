@@ -1,5 +1,4 @@
-#Area Trainer - Made by Ryan.
-#The programme is for students to practise calculating the areas of triangles, rectangles and circles, great for examination revision.
+#Area Trainer is for students to practise calculating the areas of triangles, rectangles and circles, great for examination revision.
 print("\nStarting programme...\n\n. . .")
 import random,math,time,datetime,os,json
 filename="users.json"
