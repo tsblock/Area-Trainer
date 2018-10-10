@@ -21,7 +21,7 @@ If your answer is correct, you will gain 3 points.
 
 If you answer any question wrong, you will not gain any points.
 
-# Future Plans
+## Future Plans
 - Improve exception handling.
 - Turn Area Trainer into a fully-functional Discord bot with a global leaderboard system.
 - Make questions more "random".
